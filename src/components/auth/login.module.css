@@ -1,0 +1,11 @@
+.container {
+  height: 100vh;
+  background: url(../../images/bg-login.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.formHeader {
+  font-size: 52px;
+  
+}
