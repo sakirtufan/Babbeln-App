@@ -1,13 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./index.css";
+import App from "./App";
+import Signup from "./components/auth/Signup"
+import Login from "./components/auth/Login"
 
-ReactDOM.render(
-
-    <App />,
- 
-  document.getElementById('root')
+const Root = () => (
+  <Router>
+    <Switch>
+      <Route exact path="/" component={App} />
+      <Route exact path="/signup" component={Signup} />
+      <Route exact path="/login" component={Login} />
+    </Switch>
+  </Router>
 );
 
+ReactDOM.render(
+  <Root />,
 
+  document.getElementById("root")
+);
