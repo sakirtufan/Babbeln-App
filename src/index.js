@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "semantic-ui-css/semantic.min.css";
 import store from "./store/store";
 import firebase from "./firebase";
@@ -8,11 +8,12 @@ import {
   firebaseReducer,
 } from "react-redux-firebase";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
+import PrivateRoute from "./components/auth/PrivateRoute";
 
 // react-redux-firebase config
 const rrfConfig = {
@@ -25,13 +26,30 @@ const rrfProps = {
   dispatch: store.dispatch,
 };
 
-const Root = () => (
-  <Switch>
-    <Route exact path="/" component={App} />
-    <Route exact path="/signup" component={Signup} />
-    <Route exact path="/login" component={Login} />
-  </Switch>
-);
+const Root = () => {
+  const history = useHistory()
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // Login
+        history.push('/');
+      
+      } else {
+        // Logout
+        history.push('/login');
+      }
+    })
+  }, [])
+  return (
+    <Switch>
+      <PrivateRoute exact path="/">
+        <App />
+      </PrivateRoute>
+      <Route exact path="/signup" component={Signup} />
+      <Route exact path="/login" component={Login} />
+    </Switch>
+  );
+};
 
 ReactDOM.render(
   <Provider store={store}>
