@@ -1,8 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Grid } from "semantic-ui-react";
+import ChatPanel from "./components/ChatPanel/ChatPanel";
 import SidePanel from "./components/SidePanel/SidePanel";
 
 const App = () => {
+
+  const currentChannel = useSelector((state) => state.channels.currentChannel);
   
 
   return (
@@ -13,6 +17,7 @@ const App = () => {
         </Grid.Column>
 
         <Grid.Column style={{ background: "#fff" }} width={13}>
+          { currentChannel && <ChatPanel currentChannel={currentChannel}/>}
         </Grid.Column>
       </Grid.Row>
     </Grid>
