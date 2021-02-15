@@ -3,12 +3,11 @@ import { Icon, Popup, Menu } from "semantic-ui-react";
 import ChannelList from "../Channels/ChannelList";
 import CreateChannelForm from "../Channels/CreateChannelForm";
 import UserPanel from "../UserPanel/UserPanel";
-
+import { TwitterPicker } from "react-color";
 
 const SidePanel = () => {
   const [open, setOpen] = useState(false);
-  
-  const color = "#22194d"
+  const [color, setColor] = useState("#22194d");
 
   const handleOpen = () => {
     setOpen(true);
@@ -33,8 +32,14 @@ const SidePanel = () => {
         }}
       >
         <Menu.Item>
-           {/* UserPanel */}
-           <UserPanel />
+          <TwitterPicker
+            color={color}
+            onChangeComplete={(color) => setColor(color.hex)}
+          />
+        </Menu.Item>
+        <Menu.Item>
+          {/* UserPanel */}
+          <UserPanel />
         </Menu.Item>
         <Menu.Item>
           <Menu.Header>
