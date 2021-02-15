@@ -6,9 +6,8 @@ import { useSelector } from "react-redux";
 
 const CreateChannelForm = ({ open, onOpen, onClose }) => {
   const firebase = useFirebase();
-  const profile = useSelector(state => state.firebase.profile)
+  const profile = useSelector((state) => state.firebase.profile);
   const { register, errors, handleSubmit, setValue } = useForm();
-
 
   useEffect(() => {
     register({ name: "name" }, { required: true });
@@ -21,11 +20,11 @@ const CreateChannelForm = ({ open, onOpen, onClose }) => {
       description,
       createdBy: {
         name: profile.name,
-        avatar: profile.avatar
-      }
+        avatar: profile.avatar,
+      },
     });
     onClose();
-  }
+  };
 
   return (
     <Modal open={open} onOpen={onOpen} onClose={onClose}>
@@ -39,9 +38,9 @@ const CreateChannelForm = ({ open, onOpen, onClose }) => {
             name="name"
             placeholder="#allgemein"
             onChange={(e, { name, value }) => {
-              setValue(name,value)
+              setValue(name, value);
             }}
-            error={errors.name ? true : false }
+            error={errors.name ? true : false}
           />
           <Form.Input
             fluid
@@ -50,15 +49,22 @@ const CreateChannelForm = ({ open, onOpen, onClose }) => {
             name="description"
             placeholder="#Es ist ein Channel, in dem jedes allgemeine Thema sprechen kann"
             onChange={(e, { name, value }) => {
-              setValue(name,value)
+              setValue(name, value);
             }}
-            error={errors.description ? true : false }
+            error={errors.description ? true : false}
           />
         </Form>
       </Modal.Content>
       <Modal.Actions>
-        <Button color="black" onClick={() => onClose()}>absagen</Button>
-        <Button icon="checkmark" positive onClick={() => handleSubmit(onSubmit)()}>erstellen</Button>
+        <Button color="black" onClick={() => onClose()}>
+          absagen
+        </Button>
+        <Button
+          icon="checkmark"
+          content="erstellen"
+          positive
+          onClick={() => handleSubmit(onSubmit)()}
+        />       
       </Modal.Actions>
     </Modal>
   );
