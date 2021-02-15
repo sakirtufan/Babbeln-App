@@ -6,7 +6,8 @@ import CreateChannelForm from "../Channels/CreateChannelForm";
 
 const SidePanel = () => {
   const [open, setOpen] = useState(false);
-  const [color, setColor] = useState("#22194d");
+  
+  const color = "#22194d"
 
   const handleOpen = () => {
     setOpen(true);
@@ -35,7 +36,7 @@ const SidePanel = () => {
             Channels
             <span style={{ float: "right" }}>
               <Popup
-                content="Channels hinzufügen"
+                content="Channel hinzufügen"
                 trigger={<Icon name="add" onClick={(event) => handleOpen()} />}
               />
             </span>
