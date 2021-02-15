@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Icon, Popup, Menu } from "semantic-ui-react";
 import ChannelList from "../Channels/ChannelList";
 import CreateChannelForm from "../Channels/CreateChannelForm";
+import UserPanel from "../UserPanel/UserPanel";
 
 
 const SidePanel = () => {
@@ -31,6 +32,10 @@ const SidePanel = () => {
           height: "100vh",
         }}
       >
+        <Menu.Item>
+           {/* UserPanel */}
+           <UserPanel />
+        </Menu.Item>
         <Menu.Item>
           <Menu.Header>
             Channels
