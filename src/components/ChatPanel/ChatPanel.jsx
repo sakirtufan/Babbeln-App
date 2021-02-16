@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useFirebase } from "react-redux-firebase";
 import {
   Button,
   Comment,
@@ -10,8 +12,30 @@ import {
 } from "semantic-ui-react";
 
 const ChatPanel = ({ currentChannel }) => {
+  const firebase = useFirebase();
+  const profile = useSelector((state) => state.firebase.profile);
+  const currentUserUid = useSelector((state) => state.firebase.auth.uid);
+
   const [searchTerm, setSearchTerm] = useState("");
-  const [content,setContent] = useState("");
+  const [content, setContent] = useState("");
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (content !== "") {
+      const message = {
+        content,
+        timestamp: firebase.database.ServerValue.TIMESTAMP,
+        user: {
+          id: currentUserUid,
+          name: profile.name,
+          avatar: profile.avatar,
+        },
+      };
+
+      firebase.push(`messages/${currentChannel.key}`, message).then(() => {
+        setContent("");
+      });
+    }
+  };
   return (
     <>
       {/* Messages Header */}
@@ -42,15 +66,22 @@ const ChatPanel = ({ currentChannel }) => {
         ></Comment.Group>
       </Segment>
 
-      {/* Send New Message */}
+      {/* Send Message */}
       <Segment
-        style={{ position: "fixed", bottom: 0, width: "85%", display: "flex" }}
+        style={{ position: "fixed", bottom: 0, width: "80%", display: "flex" }}
       >
         <Button icon>
           <Icon name="add" />
         </Button>
-        <Form style={{flex:1}}>
-          <Input fluid name="message" value={content}  onChange={event => setContent(event.target.value)} labelPosition="left" placeholder={`Nachricht an ${currentChannel.name}`} />
+        <Form onSubmit={handleSubmit} style={{ flex: 1 }}>
+          <Input
+            fluid
+            name="message"
+            value={content}
+            onChange={(event) => setContent(event.target.value)}
+            labelPosition="left"
+            placeholder={`Nachricht an #${currentChannel.name}`}
+          />
         </Form>
       </Segment>
     </>
