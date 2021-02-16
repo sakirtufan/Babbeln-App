@@ -16,7 +16,7 @@ const App = () => {
           <SidePanel />
         </Grid.Column>
 
-        <Grid.Column style={{ background: "#fff" }} width={13}>
+        <Grid.Column style={{ background: "#fff"}} width={13}>
           { currentChannel && <ChatPanel currentChannel={currentChannel}/>}
         </Grid.Column>
       </Grid.Row>
