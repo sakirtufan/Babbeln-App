@@ -57,7 +57,7 @@ const CreateChannelForm = ({ open, onOpen, onClose }) => {
       </Modal.Content>
       <Modal.Actions>
         <Button color="black" onClick={() => onClose()}>
-          absagen
+          abbrechen
         </Button>
         <Button
           icon="checkmark"
