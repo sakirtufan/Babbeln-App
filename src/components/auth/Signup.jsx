@@ -53,8 +53,8 @@ const Signup = () => {
     >
       <Grid.Column style={{ maxWidth: 450 }}>
         <h1 className={styles.formHeader}>
-          Babbeln
-          <span>.io</span>
+          Chat
+          <span>`io`</span>
         </h1>
         <Form
           size="large"
