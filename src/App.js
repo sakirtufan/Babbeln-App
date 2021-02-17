@@ -10,7 +10,7 @@ const App = () => {
   
 
   return (
-    <Grid columns="2" style={{ background: "#eee", height: "110vh" }}>
+    <Grid columns="2" style={{ background: "#eee", height: "103vh" }}>
       <Grid.Row>
         <Grid.Column width={3}>
           <SidePanel />
