@@ -4,8 +4,10 @@ import ChannelList from "../Channels/ChannelList";
 import CreateChannelForm from "../Channels/CreateChannelForm";
 import UserPanel from "../UserPanel/UserPanel";
 import { TwitterPicker } from "react-color";
+import styles from "./sidePanel.modul.css"
 
-const SidePanel = () => {
+
+const SidePanel = () => {  
   const [open, setOpen] = useState(false);
   const [color, setColor] = useState("#22194d");
 
@@ -25,14 +27,14 @@ const SidePanel = () => {
         secondary
         fixed="left"
         style={{
-          width: "346px",
+          width: "18.75%",
           fontSize: "1.2rem",
           background: color,
           height: "100vh",
         }}
       >
         <Menu.Item>
-          <TwitterPicker
+          <TwitterPicker              
             color={color}
             onChangeComplete={(color) => setColor(color.hex)}
           />
