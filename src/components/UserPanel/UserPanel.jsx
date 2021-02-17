@@ -15,7 +15,7 @@ const UserPanel = () => {
     <div style={{ padding:2, display: 'flex', justifyContent: 'space-between' }}>
       <p>{profile?.name}</p>
       <div>
-        <Icon style={{}} name="sign out" onClick={() => signOut()} />
+        <Icon style={{cursor: "pointer"}} name="sign out" onClick={() => signOut()} />
       </div>
     </div>
   )
