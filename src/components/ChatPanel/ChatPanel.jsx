@@ -13,6 +13,7 @@ import {
 } from "semantic-ui-react";
 import Message from "./Message";
 
+
 const { uuid } = require("uuidv4");
 
 const ChatPanel = ({ currentChannel }) => {
@@ -139,12 +140,12 @@ const ChatPanel = ({ currentChannel }) => {
 
       {/* Message Area */}
       <Segment
-        style={{ position: "fixed", top: 55, bottom: 70, width: "81%" }}
+        style={{ position: "fixed", top: 55, bottom: 70, width: "80%", height: "100vh"}}
         basic
       >
         <Comment.Group
           style={{
-            height: "80vh",
+            height: "75vh",
             overflowY: "auto",
             maxWidth: "100%",
           }}
@@ -163,7 +164,7 @@ const ChatPanel = ({ currentChannel }) => {
         style={{
           position: "fixed",
           bottom: 0,
-          width: "85%",
+          width: "80.7%",
           display: "flex",
         }}
       >
@@ -183,7 +184,7 @@ const ChatPanel = ({ currentChannel }) => {
             value={content}
             onChange={(event) => setContent(event.target.value)}
             labelPosition="left"
-            placeholder={`Nachricht an #${currentChannel?.name}`}
+            placeholder={`Nachrichten senden an #${currentChannel?.name}`}
           />
         </Form>
       </Segment>
