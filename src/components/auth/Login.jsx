@@ -42,7 +42,7 @@ const Login = () => {
     >
       <Grid.Column style={{ maxWidth: 450 }}>
         <h1 className={styles.formHeader}>
-          Chat
+          Geveze
           <span>`io`</span>
         </h1>
         <Form
