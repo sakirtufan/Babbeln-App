@@ -1,12 +1,17 @@
-<h1 style="text-align:center,font-size:30px" ><b>GEVEZE.IO</b></h1>
+<h1 align="center"><b>GEVEZE.IO</b></h1>
 
 [Projektwebsite](https://geveze-89316.web.app)
+
+
 
 ![](https://github.com/sakirtufan/chat_geveze/blob/master/src/images/Webp.net-gifmaker%20(3).gif)
 
 
 
+
 Dieses Projekt befindet sich noch in der Entwicklung - PRs, Beiträge und Probleme sind willkommen!
+
+
 
 ## Programmfunktionen
 * Registrieren Sie sich mit Ihrem Benutzernamen, Ihrer E-Mail-Adresse und Ihrem Passwort
